@@ -15,9 +15,9 @@ st.title("➕ Agregar pregunta a un proyecto")
 # -------------------------
 # Obtener proyectos
 # -------------------------
-proyectos_resp = supabase.table("Proyectos") \
-    .select("id, Proyecto") \
-    .order("Proyecto") \
+proyectos_resp = supabase.table("proyectos") \
+    .select("id, proyecto") \
+    .order("proyecto") \
     .execute()
 
 proyectos = proyectos_resp.data
