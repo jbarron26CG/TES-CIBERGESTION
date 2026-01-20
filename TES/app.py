@@ -29,28 +29,29 @@ if not proyectos:
 # -------------------------
 # Formulario
 # -------------------------
-with st.form("form_pregunta"):
+with st.form("form_pregunta",clear_on_submit=True):
     proyecto = st.selectbox(
         "Proyecto",
         proyectos,
         format_func=lambda p: p["proyecto"]
     )
 
-    Proceso = st.text_area(
-        "proceso de la pregunta"
+    Proceso = st.selectbox(
+        "proceso de la pregunta", ["Desviacion","Proceso","Asignado"]
     )
 
-    Tipo = st.text_area(
-        "proceso de la pregunta"
+    Tipo = st.selectbox(
+        "Tipo de la pregunta", ["Grave","Medio"]
     )
 
     Pregunta = st.text_area(
-        "proceso de la pregunta"
+        "Escribe la pregunta"
     )
     Puntos = st.text_area(
-        "proceso de la pregunta"
+        "Puntua la pregunta"
     )
-    submitted = st.form_submit_button("Guardar pregunta")
+    
+    submitted = st.form_submit_button("Guardar datos",use_container_width=True,width=150,icon="💾")
 
     # -------------------------
     # Guardar en la base
