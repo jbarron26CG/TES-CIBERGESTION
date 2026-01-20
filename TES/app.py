@@ -33,7 +33,7 @@ with st.form("form_pregunta"):
     proyecto = st.selectbox(
         "Proyecto",
         proyectos,
-        format_func=lambda p: p["Proyecto"]
+        format_func=lambda p: p["proyecto"]
     )
 
     Proceso = st.text_area(
