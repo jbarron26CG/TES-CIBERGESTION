@@ -21,10 +21,6 @@ proyectos_resp = supabase.table("proyectos") \
 
 proyectos = proyectos_resp.data
 
-st.write("Respuesta completa:", proyectos_resp)
-st.write("Data:", proyectos_resp.data)
-st.write("Error:", proyectos_resp.error)
-
 
 if not proyectos:
     st.warning("No hay proyectos registrados.")
