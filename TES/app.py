@@ -50,28 +50,27 @@ with st.form("form_pregunta"):
     Puntos = st.text_area(
         "proceso de la pregunta"
     )
-
     submitted = st.form_submit_button("Guardar pregunta")
 
-# -------------------------
-# Guardar en la base
-# -------------------------
-if submitted:
-    if not Proceso.strip():
-        st.error("El texto de la pregunta no puede estar vacío.")
-    else:
-        data = {
-            "proyecto_id": proyecto["id"],
-            "Proceso_Evaluado": Proceso,
-            "Tipo_Pregunta": Tipo,
-            "Pregunta": Pregunta,
-            "Puntos": Puntos
-        }
-
-        response = supabase.table("preguntas").insert(data).execute()
-
-        if response.data:
-            st.success("✅ Pregunta guardada correctamente")
-            st.rerun()
+    # -------------------------
+    # Guardar en la base
+    # -------------------------
+    if submitted:
+        if not Proceso.strip():
+            st.error("El texto de la pregunta no puede estar vacío.")
         else:
-            st.error("❌ Ocurrió un error al guardar la pregunta")
+            data = {
+                "proyecto_id": proyecto["id"],
+                "Proceso_Evaluado": Proceso,
+                "Tipo_Pregunta": Tipo,
+                "Pregunta": Pregunta,
+                "Puntos": Puntos
+            }
+
+            response = supabase.table("preguntas").insert(data).execute()
+
+            if response.data:
+                st.success("✅ Pregunta guardada correctamente")
+                st.rerun()
+            else:
+                st.error("❌ Ocurrió un error al guardar la pregunta")
